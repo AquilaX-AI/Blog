@@ -1,9 +1,9 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "OneFirewall Documentation",
+  "name": "AquilaX Application Security Blog",
   "logo": {
-    "dark": "https://app.onefirewall.com/assets/images/logo-negativ.png",
-    "light": "https://app.onefirewall.com/docs/images/onefirewall-logo.png"
+    "dark": "https://app.aquilax.ai/aquilax/img/full-logo-aquilax-white-transparent-new.png",
+    "light": "https://app.aquilax.ai/aquilax/img/full-logo-aquilax-black-transparent-new.png"
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -36,7 +36,7 @@
     {
       "name": "Platform",
       "icon": "terminal",
-      "url": "https://app.onefirewall.com"
+      "url": "https://app.aquilax.ai"
     }
   ],
   "analytics": {
