@@ -8,8 +8,8 @@
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#0D9373",
-    "light": "#4475C5",
-    "dark": "#0C1427",
+    "light": "#0076c2",
+    "dark": "#003460",
     "anchors": {
       "from": "#070D19",
       "to": "#4475C5"
@@ -19,12 +19,12 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:support@onefirewall.com"
+      "url": "mailto:admin@aquilax.io"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://app.onefirewall.com"
+    "url": "https://app.aquilax.ai"
   },
   "tabs": [
     {
@@ -147,8 +147,8 @@
 
   ],
   "footerSocials": {
-    "website": "https://onefirewall.com",
-    "github": "https://github.com/onefirewall",
-    "linkedin": "https://www.linkedin.com/company/onefirewall-alliance"
+    "website": "https://aquilax.ai",
+    "github": "https://github.com/AquilaX-AI",
+    "linkedin": "https://www.linkedin.com/company/aquilax-ai"
   }
 }
