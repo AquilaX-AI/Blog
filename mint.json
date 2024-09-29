@@ -1,0 +1,154 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "OneFirewall Documentation",
+  "logo": {
+    "dark": "https://app.onefirewall.com/assets/images/logo-negativ.png",
+    "light": "https://app.onefirewall.com/docs/images/onefirewall-logo.png"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#4475C5",
+    "dark": "#0C1427",
+    "anchors": {
+      "from": "#070D19",
+      "to": "#4475C5"
+    }
+  },
+  "openapi": "/api-reference/openapi.json",
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@onefirewall.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://app.onefirewall.com"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Platform",
+      "icon": "terminal",
+      "url": "https://app.onefirewall.com"
+    }
+  ],
+  "analytics": {
+    "ga4": {
+        "measurementId": "G-P017T6ZNCY"
+    }
+  },
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction"
+      ]
+    },
+    {
+      "group": "Essentials",
+      "pages": [
+        "essentials/ofa-coins",
+        "essentials/pov",
+        "essentials/vps"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/authorization",
+        "api-reference/openapi"
+      ]
+    },
+    {
+      "group": "WCF Agent",
+      "pages": [
+        "wcf-agents/secure-xl"
+      ]
+    },
+    {
+      "group": "Products",
+      "pages": [
+        "products/secure-vpn"
+      ]
+    },
+    {
+      "group": "IPv4 Feeds",
+      "pages": [
+        "api-reference/endpoint/ipv4-feeds/latest-ipv4",
+        "api-reference/endpoint/ipv4-feeds/live-ipv4",
+        "api-reference/endpoint/ipv4-feeds/one-ipv4",
+        "api-reference/endpoint/ipv4-feeds/pre-compiled-ipv4",
+        "api-reference/endpoint/ipv4-feeds/report-ipv4"
+      ]
+    },
+    {
+      "group": "Domain Feeds",
+      "pages": [
+        "api-reference/endpoint/domain-feeds/domains-by-score",
+        "api-reference/endpoint/domain-feeds/domains-by-ts",
+        "api-reference/endpoint/domain-feeds/overwrite-decision",
+        "api-reference/endpoint/domain-feeds/report-domain",
+        "api-reference/endpoint/domain-feeds/scan-domain"
+      ]
+    },
+    {
+      "group": "URL Feeds",
+      "pages": [
+        "api-reference/endpoint/url-feeds/urls-by-score",
+        "api-reference/endpoint/url-feeds/urls-by-ts",
+        "api-reference/endpoint/url-feeds/overwrite-decision",
+        "api-reference/endpoint/url-feeds/report-url",
+        "api-reference/endpoint/url-feeds/scan-url"
+      ]
+    },
+    {
+      "group": "Security Binary",
+      "pages": [
+        "api-reference/endpoint/security-binary-feeds/files-by-score",
+        "api-reference/endpoint/security-binary-feeds/files-by-ts",
+        "api-reference/endpoint/security-binary-feeds/overwrite-decision",
+        "api-reference/endpoint/security-binary-feeds/report-digest",
+        "api-reference/endpoint/security-binary-feeds/files"
+      ]
+    },
+    {
+      "group": "STIX2 Feeds",
+      "pages": [
+        "api-reference/endpoint/iocs/stix20"
+      ]
+    },
+    {
+      "group": "Secure VPN",
+      "pages": [
+        "api-reference/endpoint/secure-vpn/get-all",
+        "api-reference/endpoint/secure-vpn/create",
+        "api-reference/endpoint/secure-vpn/get-one",
+        "api-reference/endpoint/secure-vpn/delete-one"
+      ]
+    },
+    {
+      "group": "Tools/Utils",
+      "pages": [
+        "api-reference/endpoint/tools/file-types",
+        "api-reference/endpoint/tools/health-check",
+        "api-reference/endpoint/tools/ip-metadata",
+        "api-reference/endpoint/tools/list-of-cdns",
+        "api-reference/endpoint/tools/reverse-domain"
+      ]
+    }
+
+  ],
+  "footerSocials": {
+    "website": "https://onefirewall.com",
+    "github": "https://github.com/onefirewall",
+    "linkedin": "https://www.linkedin.com/company/onefirewall-alliance"
+  }
+}
