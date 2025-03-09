@@ -7,12 +7,12 @@
   },
   "favicon": "/aquilax-favicon.png",
   "colors": {
-    "primary": "#0D9373",
+    "primary": "#003460",
     "light": "#0076c2",
     "dark": "#003460",
     "anchors": {
-      "from": "#070D19",
-      "to": "#4475C5"
+      "from": "#003460",
+      "to": "#0076c2"
     }
   },
   "openapi": "/api-reference/openapi.json",
