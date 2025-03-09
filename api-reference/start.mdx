@@ -1,3 +1,36 @@
 ---
-openapi: get /api/v2/health
+title: 'Access Token'
+description: 'Create a token to interact with AquilaX Portal'
 ---
+
+# Create a PAT for AquilaX APIs
+
+A Personal Access Token (PAT) is required to authenticate API requests to AquilaX services securely. Follow these steps to generate a PAT.
+
+---
+
+## 1. Log in to AquilaX
+1. Visit [AquilaX Login](https://app.aquilax.ai/login).
+2. Use any sogial login or simple a magic link to your email to access your dashboard.
+
+## 2. Navigate to API Settings
+1. Go to your profile (top right).
+2. Scroll down to `Personal Access Tokens (PAT)`
+
+## 3. Generate a New Token
+1. Click `New Access Token`
+2. Provide a `Name` for your token (e.g., `My App`).
+3. Set an **Expiration Date** (recommended for security).
+
+## 4. Create and Save the Token
+1. Click `Create`.
+2. **Copy the token** immediately and save it securely. You won't be able to view it again.
+
+## 5. Use the Token in API Requests
+Add the following HTTP header to your API requests:
+```
+X-AX-KEY: '<your Personal Access Token here>'
+```
+
+---
+You will not need the token for some APIs (example health check etc), or for any public scan

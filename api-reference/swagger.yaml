@@ -98,16 +98,31 @@ components:
           type: string
           format: date-time
 
+    VerifyMe:
+      type: object
+      description: Schema representing user data.
+      properties:
+        email:
+          type: string
+          example: user@example.com
+          description: "User Email"
+        userData:
+          type: string
+          description: "Unique User ID"
+          example: "xxxxx-82f9-4c65-b1cd-xxxxxxxxx"
+
     UserData:
       type: object
       description: Schema representing user data.
       properties:
-        id:
+        notification_count:
+          type: integer
+          example: 0
+          description: "User Email"
+        user_id:
           type: string
-        email:
-          type: string
-        name:
-          type: string
+          description: "Unique User ID"
+          example: "xxxxx-82f9-4c65-b1cd-xxxxxxxxx"
 
     Notification:
       type: object
@@ -241,7 +256,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserData'
+                $ref: '#/components/schemas/VerifyMe'
 
   /api/v2/get-user-data:
     get:

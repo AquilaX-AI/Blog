@@ -18,8 +18,8 @@
   "openapi": "/api-reference/openapi.json",
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:admin@aquilax.io"
+      "name": "Login",
+      "url": "https://aquilax.ai/login"
     }
   ],
   "topbarCtaButton": {
@@ -58,7 +58,14 @@
       ]
     },
     {
-      "group": "Public",
+      "group": "PAT",
+      "pages": [
+        "api-reference/start"
+
+      ]
+    },
+    {
+      "group": "Health Checks",
       "pages": [
         "api-reference/public/health",
         "api-reference/public/app-stats"
@@ -66,9 +73,22 @@
       ]
     },
     {
+      "group": "Public Scan",
+      "pages": [
+        "api-reference/public_scan/start_scan",
+        "api-reference/public_scan/get_results"
+
+      ]
+    },
+    {
       "group": "Account",
       "pages": [
-        "api-reference/profile/verifyme"
+        "api-reference/profile/verifyme",
+        "api-reference/profile/get-user-data",
+        "api-reference/profile/activity-logs",
+        "api-reference/profile/notifications",
+        "api-reference/profile/access-token"
+
       ]
     }
 
