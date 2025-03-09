@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "AquilaX Application Security Blog",
+  "name": "AquilaX Developer Portal",
   "logo": {
-    "dark": "https://app.aquilax.ai/aquilax/img/full-logo-aquilax-white-transparent-new.png",
-    "light": "https://app.aquilax.ai/aquilax/img/full-logo-aquilax-black-transparent-new.png"
+    "dark": "https://aquilax.ai/landing/assets/img/aquilax-ai.webp",
+    "light": "https://aquilax.ai/landing/assets/img/aquilax-ai.webp"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/aquilax-favicon.png",
   "colors": {
     "primary": "#0D9373",
     "light": "#0076c2",
