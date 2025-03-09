@@ -1,0 +1,345 @@
+openapi: 3.0.0
+info:
+  title: AquilaX AI API Docs
+  version: '2.0'
+  description: |
+    Welcome to the API documentation for AquilaX. Integrate AquilaX for advanced data processing and analytics in your applications. Key features include seamless data ingestion, powerful processing capabilities, analytics tools, real-time updates, and robust security measures. Get started with API keys, explore endpoints, understand formats, and implement error handling.Authorization is required for all end-points, excluding the one under Public Section. To authenticate, a Personal Access Token `PAT` must be included in the request header with the name `X-AX-KEY`. Happy coding!
+
+servers:
+  - url: https://aquilax.ai
+    description: Cloud Instance
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-AX-KEY  # Define the header name for PAT
+
+  schemas:
+    Error:
+      type: object
+      description: Schema for error responses.
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+    HealthResponse:
+      type: object
+      description: Schema for health check response.
+      properties:
+        ID:
+          type: string
+          example: "95148e14be674e067be644de814de36c"
+          description: "random generated request id"
+        hostname:
+          type: string
+          example: "localhost"
+          description: "Hostname of the server"
+        status:
+          type: string
+          example: "ok"
+          description: " `ok` only if the API Services is healthy"
+        timestamp:
+          type: integer
+          example: 1741492261
+          description: "unix timestamp of the request"
+        version:
+          type: integer
+          example: 2
+          description: "API Version"
+
+    AppStats:
+      type: object
+      description: Schema for application statistics.
+      properties:
+        line_of_codes:
+          type: integer
+        orgs:
+          type: integer
+        scans:
+          type: integer
+        users:
+          type: integer
+        vulns:
+          type: integer
+
+    ScanRequest:
+      type: object
+      description: Schema for initiating a new scan.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: The URL of the public Git repository to scan.
+        options:
+          type: object
+          description: Optional parameters for the scan.
+          properties:
+            depth:
+              type: integer
+              description: Scan depth level.
+            include_submodules:
+              type: boolean
+              description: Include submodules in the scan.
+
+    ScanResponse:
+      type: object
+      description: Schema for scan response.
+      properties:
+        scan_token:
+          type: string
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    UserData:
+      type: object
+      description: Schema representing user data.
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+
+    Notification:
+      type: object
+      description: Schema for user notifications.
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    ActivityLog:
+      type: object
+      description: Schema for activity logs.
+      properties:
+        id:
+          type: string
+        action:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    AccessToken:
+      type: object
+      description: Schema for access token.
+      properties:
+        token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+
+security:
+  - ApiKeyAuth: []
+
+tags:
+  - name: Health
+    description: Endpoints for metrics and health check
+  - name: Profile
+    description: Endpoints for managing user profiles
+  - name: Public Scan
+    description: Endpoints for scanning a public git repo
+  - name: Admin
+    description: Endpoints for AquilaX Worker
+
+paths:
+  /api/v2/health:
+    get:
+      summary: Health check endpoint
+      tags:
+        - Health
+      description: Check if the API is running
+      security: []
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /api/v2/app-stats:
+    get:
+      summary: Get application statistics
+      tags:
+        - Health
+      description: Retrieve general statistics about the application
+      security: []
+      responses:
+        '200':
+          description: Statistics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppStats'
+
+  /api/v2/public/scan:
+    post:
+      summary: Start a new public scan
+      security: []
+      tags:
+        - Public Scan
+      description: Initiate a new scan without authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScanRequest'
+      responses:
+        '200':
+          description: Scan initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanResponse'
+
+  /api/v2/public/scan/{scan_token}:
+    get:
+      summary: Get public scan results
+      security: []
+      tags:
+        - Public Scan
+      parameters:
+        - name: scan_token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scan results retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanResponse'
+
+  /api/v2/verifyme:
+    get:
+      summary: Verify current user
+      tags:
+        - Profile
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: User verified successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserData'
+
+  /api/v2/get-user-data:
+    get:
+      summary: Get user data
+      tags:
+        - Profile
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: User data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserData'
+
+  /api/v2/profile/notifications:
+    get:
+      summary: Get user notifications
+      tags:
+        - Profile
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Notifications retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Notification'
+
+  /api/v2/profile/activity-logs:
+    get:
+      summary: Get user activity logs
+      tags:
+        - Profile
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Activity logs retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActivityLog'
+
+  /api/v2/auth/access-token:
+    get:
+      summary: Get user access tokens
+      tags:
+        - Profile
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Access tokens retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccessToken'
+
+  /api/v2/admin/scans/pending:
+    get:
+      summary: Get pending scans
+      tags:
+        - Admin
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Pending scans retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScanResponse'
+
+  /api/v2/heartbeat/runners:
+    get:
+      summary: Runner heartbeat endpoint
+      tags:
+        - Health
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Heartbeat successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
