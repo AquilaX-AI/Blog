@@ -259,23 +259,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserData'
 
-  /api/v2/profile/notifications:
-    get:
-      summary: Notifications
-      tags:
-        - Profile
-      security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
-          description: Notifications retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Notification'
-
   /api/v2/admin/scans/pending:
     get:
       summary: Get pending scans

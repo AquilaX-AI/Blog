@@ -83,8 +83,7 @@
     {
       "group": "Account",
       "pages": [
-        "api-reference/profile/profile",
-        "api-reference/profile/notifications"
+        "api-reference/profile/profile"
 
       ]
     }
