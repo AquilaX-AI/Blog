@@ -243,24 +243,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ScanResponse'
 
-  /api/v2/verifyme:
+  /api/v2/profile:
     get:
-      summary: Verify current user
-      tags:
-        - Profile
-      security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
-          description: User verified successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/VerifyMe'
-
-  /api/v2/get-user-data:
-    get:
-      summary: Get user data
+      summary: Profile
+      description: Retrieve user data, organizations, notification_count, latest access logs and access tokens
       tags:
         - Profile
       security:
@@ -275,7 +261,7 @@ paths:
 
   /api/v2/profile/notifications:
     get:
-      summary: Get user notifications
+      summary: Notifications
       tags:
         - Profile
       security:
@@ -289,40 +275,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Notification'
-
-  /api/v2/profile/activity-logs:
-    get:
-      summary: Get user activity logs
-      tags:
-        - Profile
-      security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
-          description: Activity logs retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ActivityLog'
-
-  /api/v2/auth/access-token:
-    get:
-      summary: Get user access tokens
-      tags:
-        - Profile
-      security:
-        - ApiKeyAuth: []
-      responses:
-        '200':
-          description: Access tokens retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccessToken'
 
   /api/v2/admin/scans/pending:
     get:
