@@ -84,7 +84,12 @@
       "group": "Account",
       "pages": [
         "api-reference/profile/profile"
-
+      ]
+    },
+    {
+      "group": "GenAI",
+      "pages": [
+        "api-reference/genai/securitron"
       ]
     }
 

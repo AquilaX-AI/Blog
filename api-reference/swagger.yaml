@@ -293,3 +293,58 @@ paths:
                 properties:
                   status:
                     type: string
+
+
+  /api/v2/{organization_id}/securitron:
+    post:
+      summary: Securitron ChatBot
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "your_own_org"
+      description: Securitron is built on a series of specialized Small Language Models (SLMs), designed to enhance user experience and streamline interactions within the AquilaX ecosystem. 🚀
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                type: object
+                description: Data to submit on your request to Securitron
+                properties:
+                  prompt:
+                    type: string
+                    description: The URL of the public Git repository to scan.
+                    example: "Who am i?"
+                  group_id:
+                    type: string
+                    description: The group ID you want Securitron to use2
+                    example: "abc"
+                  sessione_id:
+                    type: string
+                    description: A random ID defined from the client, to be used as a sessione_id
+                    example: "123"
+                  stream:
+                    type: boolean
+                    description: A random ID defined from the client, to be used as a sessione_id
+                    example: false
+
+      responses:
+        '200':
+          description: Successful response with a structured text output
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: |
+                  ~~~tags|type|var1|var2|var3
+                  Hey Name Surname!  
+                  You authenticated via google using `your_email@aquilax.io`. 
+
+                  $$$ My profile $$$
