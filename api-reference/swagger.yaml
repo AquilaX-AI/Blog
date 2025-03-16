@@ -343,7 +343,7 @@ paths:
               schema:
                 type: string
                 example: |
-                  ~~~tags|type|var1|var2|var3
+                  $tags|type|var1|var2|var3$
                   Hey Name Surname!  
                   You authenticated via google using `your_email@aquilax.io`. 
 
