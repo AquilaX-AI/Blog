@@ -320,7 +320,7 @@ paths:
                 properties:
                   prompt:
                     type: string
-                    description: The URL of the public Git repository to scan.
+                    description: A user prompt
                     example: "Who am i?"
                   group_id:
                     type: string
@@ -342,6 +342,16 @@ paths:
             text/plain:
               schema:
                 type: string
+                description: |
+                  If the first line of the content starts and ends with $, it serves purely for operational and metric purposes and should not be displayed to the user. This line represents an array of five strings, separated by the | character:
+                    1.	SLM used – Specifies the Service Level Model.
+                    2.	Operation type – Defines the action to be executed. Possible values:
+                    •	type
+                    •	pop
+                    •	exec
+                    3.	Additional values (3) – Reserved for future use.
+                    The rest of the response is an Markdown for the user to see
+                  Additionally, the content may include strings encapsulated in $$$ prompt $$$. These sections should be highlighted in a distinct way to indicate that they are selectable elements, designed to help users choose their next prompt.    
                 example: |
                   $tags|type|var1|var2|var3$
                   Hey Name Surname!  
