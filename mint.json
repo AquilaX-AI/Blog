@@ -92,6 +92,13 @@
         "api-reference/genai/securitron"
       ]
     }
+    ,
+    {
+      "group": "Groups",
+      "pages": [
+        "api-reference/groups/get-groups"
+      ]
+    }
 
   ],
   "footerSocials": {

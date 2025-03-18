@@ -27,6 +27,14 @@ components:
         message:
           type: string
 
+    GenericJSON:
+      type: object
+      description: |
+        JSON Object or Array containing the data in request. 
+        Please do your own request to validate the JSON in output, 
+        as it may contain different information
+
+
     HealthResponse:
       type: object
       description: Schema for health check response.
@@ -358,3 +366,25 @@ paths:
                   You authenticated via google using `your_email@aquilax.io`. 
 
                   $$$ My profile $$$
+
+  /api/v2/organization/{organization_id}/groups:
+    get:
+      summary: Get Groups
+      description: Returns an array of all groups associated with the given organization ID. 🚀
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: scan_token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Group Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'
