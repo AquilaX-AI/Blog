@@ -376,7 +376,7 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: scan_token
+        - name: organization_id
           in: path
           required: true
           schema:
