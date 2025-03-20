@@ -347,25 +347,16 @@ paths:
         '200':
           description: Successful response with a structured text output
           content:
-            text/plain:
+            text/markdown:
               schema:
                 type: string
                 description: |
-                  If the first line of the content starts and ends with $, it serves purely for operational and metric purposes and should not be displayed to the user. This line represents an array of five strings, separated by the | character:
-                    1.	SLM used – Specifies the Service Level Model.
-                    2.	Operation type – Defines the action to be executed. Possible values:
-                    •	type
-                    •	pop
-                    •	exec
-                    3.	Additional values (3) – Reserved for future use.
-                    The rest of the response is an Markdown for the user to see
-                  Additionally, the content may include strings encapsulated in $$$ prompt $$$. These sections should be highlighted in a distinct way to indicate that they are selectable elements, designed to help users choose their next prompt.    
+                 Since the content type is always set to text/markdown, it should consistently be processed as such. 
+                 This applies even if an API call fails with a status code other than 200—the response body will still contain a markdown-formatted message conveying the necessary information to the user. 
+                 The only exception is when the content type is set to stream; in that case, the content should still be treated as markdown but delivered in a streaming format. 
                 example: |
-                  $tags|type|var1|var2|var3$
                   Hey Name Surname!  
                   You authenticated via google using `your_email@aquilax.io`. 
-
-                  $$$ My profile $$$
 
   /api/v2/organization/{organization_id}/groups:
     get:
