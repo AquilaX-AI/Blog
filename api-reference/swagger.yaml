@@ -406,7 +406,34 @@ paths:
           schema:
             type: string
       responses:
-        '201':
+        '200':
+          description: Group Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'
+
+  /api/v2/organization/{organization_id}/group/{group_id}/report:
+    get:
+      summary: Report
+      description: Returns an JSON documentation with the number of projects, scans, line of code and files, along with the vulnerabilites
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: group_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
           description: Group Results
           content:
             application/json:
