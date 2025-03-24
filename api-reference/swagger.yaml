@@ -182,7 +182,7 @@ tags:
 paths:
   /api/v2/health:
     get:
-      summary: Health check endpoint
+      summary: Health
       tags:
         - Health
       description: Check if the API is running
@@ -197,7 +197,7 @@ paths:
 
   /api/v2/app-stats:
     get:
-      summary: Get application statistics
+      summary: Statistics
       tags:
         - Health
       description: Retrieve general statistics about the application
@@ -212,7 +212,7 @@ paths:
 
   /api/v2/public/scan:
     post:
-      summary: Start a new public scan
+      summary: New public scan
       security: []
       tags:
         - Public Scan
@@ -233,7 +233,7 @@ paths:
 
   /api/v2/public/scan/{scan_token}:
     get:
-      summary: Get public scan results
+      summary: Public scan results
       security: []
       tags:
         - Public Scan
@@ -393,8 +393,30 @@ paths:
 
   /api/v2/organization/{organization_id}/groups:
     get:
-      summary: Get Groups
+      summary: Groups
       description: Returns an array of all groups associated with the given organization ID. 🚀
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Group Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'
+
+  /api/v2/organization/{organization_id}/integrations:
+    get:
+      summary: Integrations
+      description: Returns an array of all integrations associated with the given organization ID. 🚀
       tags:
         - Public Scan
       security:
@@ -443,7 +465,7 @@ paths:
 
   /api/v2/organization/{organization_id}/group/{group_id}/report/scans:
     get:
-      summary: Report Scans
+      summary: Scans analytics
       description: Returns an JSON documentation with the number of scans, the time are created and their status (the API my limit the quantity of data for performance reasons)
       tags:
         - Public Scan
@@ -471,7 +493,7 @@ paths:
 
   /api/v2/organization/{organization_id}/group/{group_id}/projects:
     get:
-      summary: Get Projects
+      summary: Projects
       description: Returns an JSON Array of all not-deleted projects for the given group ID
       tags:
         - Public Scan
