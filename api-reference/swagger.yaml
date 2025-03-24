@@ -439,3 +439,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
+
+
+  /api/v2/organization/{organization_id}/group/{group_id}/report/scans:
+    get:
+      summary: Scans
+      description: Returns an JSON documentation with the number of scans, the time are created and their status (the API my limit the quantity of data for performance reasons)
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: group_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Group Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'

@@ -97,7 +97,9 @@
       "group": "Groups",
       "pages": [
         "api-reference/groups/get-groups",
-        "api-reference/groups/report"
+        "api-reference/groups/report",
+        "api-reference/groups/scans"
+
       ]
     }
 
