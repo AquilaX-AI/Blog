@@ -99,7 +99,12 @@
         "api-reference/groups/get-groups",
         "api-reference/groups/report",
         "api-reference/groups/scans"
-
+      ]
+    },
+    {
+      "group": "Projects",
+      "pages": [
+        "api-reference/projects/get-projects"
       ]
     }
 
