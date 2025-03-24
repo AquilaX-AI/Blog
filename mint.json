@@ -52,12 +52,6 @@
       ]
     },
     {
-      "group": "Account",
-      "pages": [
-        "account/access"
-      ]
-    },
-    {
       "group": "PAT",
       "pages": [
         "api-reference/start"
