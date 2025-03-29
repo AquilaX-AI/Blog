@@ -91,7 +91,9 @@
       "group": "Organizations",
       "pages": [
         "api-reference/orgs/get-integrations",
-        "api-reference/groups/get-groups"
+        "api-reference/groups/get-groups",
+        "api-reference/groups/delete"
+
 
       ]
     },
