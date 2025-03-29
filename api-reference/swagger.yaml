@@ -494,7 +494,7 @@ paths:
   /api/v2/organization/{organization_id}/group/{group_id}/projects:
     get:
       summary: Projects
-      description: Returns an JSON Array of all not-deleted projects for the given group ID
+      description: Returns an JSON Array of all projects for the given group ID
       tags:
         - Public Scan
       security:
@@ -518,3 +518,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
 
+  /api/v2/organization/{organization_id}/group/{group_id}/project/{project_id}:
+    delete:
+      summary: Project
+      description: Delete a project and its related scans. This is a hard delete
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: group_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'
