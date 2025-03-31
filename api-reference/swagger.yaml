@@ -302,7 +302,7 @@ paths:
                   status:
                     type: string
 
-  /api/v2/{organization_id}/securitron:
+  /api/v2/organization/{organization_id}/group/{group_id}/securitron:
     post:
       summary: Securitron ChatBot
       tags:
@@ -316,6 +316,12 @@ paths:
           schema:
             type: string
             default: "your_own_org"
+        - name: group_id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "your group id"
       description: Securitron is built on a series of specialized Small Language Models (SLMs), designed to enhance user experience and streamline interactions within the AquilaX ecosystem. 🚀
       requestBody:
         required: true
@@ -329,10 +335,6 @@ paths:
                     type: string
                     description: A user prompt
                     example: "Who am i?"
-                  group_id:
-                    type: string
-                    description: The group ID you want Securitron to use2
-                    example: "abc"
                   sessione_id:
                     type: string
                     description: A random ID defined from the client, to be used as a sessione_id
