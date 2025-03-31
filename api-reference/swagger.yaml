@@ -335,15 +335,17 @@ paths:
                     type: string
                     description: A user prompt
                     example: "Who am i?"
+                    default: "Who am i?"
                   sessione_id:
                     type: string
                     description: A random ID defined from the client, to be used as a sessione_id
                     example: "123"
+                    default: "123"
                   stream:
                     type: boolean
-                    description: A random ID defined from the client, to be used as a sessione_id
+                    description: "`true` or `false`, to receive the data in streaming"
                     example: false
-
+                    default: true
       responses:
         '200':
           description: Successful response with a structured text output
