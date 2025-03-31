@@ -108,6 +108,7 @@
       "group": "Projects",
       "pages": [
         "api-reference/projects/get-projects",
+        "api-reference/projects/get",
         "api-reference/projects/delete"
       ]
     },

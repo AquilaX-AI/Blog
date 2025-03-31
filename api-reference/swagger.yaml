@@ -302,7 +302,6 @@ paths:
                   status:
                     type: string
 
-
   /api/v2/{organization_id}/securitron:
     post:
       summary: Securitron ChatBot
@@ -462,7 +461,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
 
-
   /api/v2/organization/{organization_id}/group/{group_id}/report/scans:
     get:
       summary: Scans analytics
@@ -489,7 +487,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
-
 
   /api/v2/organization/{organization_id}/group/{group_id}/projects:
     get:
@@ -519,6 +516,36 @@ paths:
                 $ref: '#/components/schemas/GenericJSON'
 
   /api/v2/organization/{organization_id}/group/{group_id}/project/{project_id}:
+    get:
+      summary: List of Scans
+      description: Return and array of all scan for the given project ID
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: group_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'
     delete:
       summary: Delete a Project
       description: Delete a project and its related scans. This is a hard delete
@@ -627,8 +654,6 @@ paths:
                     type: string
                     description: Scan ID of the new Scan
                     example: "67e9f3205357d4a0178efde6"
-
-
 
   /api/v2/organization/{organization_id}/group/{group_id}/scan/{scan_id}:
     get:
