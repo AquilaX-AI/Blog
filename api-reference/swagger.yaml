@@ -576,3 +576,94 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
+
+  /api/v2/organization/{organization_id}/group/{group_id}/scan:
+    post:
+      summary: Start a Scan
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "your_own_org"
+        - name: group_id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: ""
+      description: Start a new source code scan based on a git code base 🚀
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                type: object
+                description: Data to submit on your request to Securitron
+                properties:
+                  git_uri:
+                    type: string
+                    description: Git URL to scan
+                    example: "https://github.com/AquilaX-AI/vulnapp-python"
+                  branch:
+                    type: string
+                    description: Git Branch to Scan
+                    example: "main"
+                  initiated:
+                    type: string
+                    description: "web/api/cicd"
+                    example: "web"
+      responses:
+        '200':
+          description: Successful response with a structured text output
+          content:
+            text/markdown:
+              schema:
+                type: object
+                properties:
+                  scan_id:
+                    type: string
+                    description: Scan ID of the new Scan
+                    example: "67e9f3205357d4a0178efde6"
+
+
+
+  /api/v2/organization/{organization_id}/group/{group_id}/scan/{scan_id}:
+    get:
+      summary: Get Scan Results
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "your_own_org"
+        - name: group_id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: ""
+        - name: scan_id
+          in: path
+          required: true
+          schema:
+            type: string
+            default: ""
+      description: Get results of a scan based on Scan ID
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'

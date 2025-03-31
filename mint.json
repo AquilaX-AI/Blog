@@ -110,6 +110,13 @@
         "api-reference/projects/get-projects",
         "api-reference/projects/delete"
       ]
+    },
+    {
+      "group": "Scan",
+      "pages": [
+        "api-reference/scan/start-scan",
+        "api-reference/scan/get-scan"
+      ]
     }
 
   ],
