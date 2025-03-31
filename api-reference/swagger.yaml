@@ -612,12 +612,9 @@ paths:
                     example: "https://github.com/AquilaX-AI/vulnapp-python"
                   branch:
                     type: string
-                    description: Git Branch to Scan
+                    description: Git Branch to Scan, if not set then `main` will be used
                     example: "main"
-                  initiated:
-                    type: string
-                    description: "web/api/cicd"
-                    example: "web"
+                    default: "main"
       responses:
         '200':
           description: Successful response with a structured text output
