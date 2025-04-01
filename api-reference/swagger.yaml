@@ -438,7 +438,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
 
-  /api/v2/organization/{organization_id}/group/{group_id}/report:
+  /api/v2/report:
     get:
       summary: Report
       description: Returns an JSON documentation with the number of projects, scans, line of code and files, along with the vulnerabilites
@@ -465,7 +465,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
 
-  /api/v2/organization/{organization_id}/group/{group_id}/report/scans:
+  /api/v2/report/scans:
     get:
       summary: Scans analytics
       description: Returns an JSON documentation with the number of scans, the time are created and their status (the API my limit the quantity of data for performance reasons)
