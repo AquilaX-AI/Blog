@@ -530,12 +530,12 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: organization_id
+        - name: org
           in: query
           required: true
           schema:
             type: string
-        - name: group_id
+        - name: group
           in: query
           required: true
           schema:
@@ -618,13 +618,13 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: organization_id
+        - name: org
           in: query
           required: true
           schema:
             type: string
             default: "your_own_org"
-        - name: group_id
+        - name: group
           in: query
           required: true
           schema:
@@ -669,13 +669,13 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: organization_id
+        - name: org
           in: query
           required: true
           schema:
             type: string
             default: "your_own_org"
-        - name: group_id
+        - name: group
           in: query
           required: true
           schema:
