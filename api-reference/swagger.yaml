@@ -695,3 +695,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
+
+
+  /api/v2/vulns:
+    get:
+      summary: List
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: org
+          in: query
+          required: true
+          schema:
+            type: string
+            default: "your_own_org"
+        - name: group
+          in: query
+          required: true
+          schema:
+            type: string
+            default: ""
+      description: Return an array of all scans with the associated vulnerabilites
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericJSON'
