@@ -302,7 +302,7 @@ paths:
                   status:
                     type: string
 
-  /api/v2/organization/{organization_id}/group/{group_id}/securitron:
+  /api/v2/securitron:
     post:
       summary: Securitron ChatBot
       tags:
@@ -310,18 +310,18 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: organization_id
-          in: path
+        - name: org
+          in: query
           required: true
+          description: Organization ID
           schema:
             type: string
-            default: "your_own_org"
-        - name: group_id
-          in: path
+        - name: group
+          in: query
           required: true
+          description: Group ID
           schema:
             type: string
-            default: "your group id"
       description: Securitron is built on a series of specialized Small Language Models (SLMs), designed to enhance user experience and streamline interactions within the AquilaX ecosystem. 🚀
       requestBody:
         required: true
@@ -492,7 +492,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
 
-  /api/v2/organization/{organization_id}/group/{group_id}/projects:
+  /api/v2/projects:
     get:
       summary: All Projects
       description: Returns an JSON Array of all projects for the given group ID
@@ -501,14 +501,16 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: organization_id
-          in: path
+        - name: org
+          in: query
           required: true
+          description: Organization ID
           schema:
             type: string
-        - name: group_id
-          in: path
+        - name: group
+          in: query
           required: true
+          description: Group ID
           schema:
             type: string
       responses:
