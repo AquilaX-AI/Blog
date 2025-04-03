@@ -447,13 +447,13 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: organization_id
-          in: path
+        - name: org
+          in: query
           required: true
           schema:
             type: string
-        - name: group_id
-          in: path
+        - name: group
+          in: query
           required: true
           schema:
             type: string
@@ -474,13 +474,13 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: organization_id
-          in: path
+        - name: org
+          in: query
           required: true
           schema:
             type: string
-        - name: group_id
-          in: path
+        - name: group
+          in: query
           required: true
           schema:
             type: string
