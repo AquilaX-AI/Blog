@@ -195,62 +195,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/HealthResponse'
 
-  /api/v2/app-stats:
-    get:
-      summary: Statistics
-      tags:
-        - Health
-      description: Retrieve general statistics about the application
-      security: []
-      responses:
-        '200':
-          description: Statistics retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AppStats'
-
-  /api/v2/public/scan:
-    post:
-      summary: New public scan
-      security: []
-      tags:
-        - Public Scan
-      description: Initiate a new scan without authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ScanRequest'
-      responses:
-        '200':
-          description: Scan initiated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ScanResponse'
-
-  /api/v2/public/scan/{scan_token}:
-    get:
-      summary: Public scan results
-      security: []
-      tags:
-        - Public Scan
-      parameters:
-        - name: scan_token
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Scan results retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ScanResponse'
-
   /api/v2/profile:
     get:
       summary: Profile

@@ -61,17 +61,7 @@
     {
       "group": "Health Checks",
       "pages": [
-        "api-reference/public/health",
-        "api-reference/public/app-stats"
-
-      ]
-    },
-    {
-      "group": "Public Scan",
-      "pages": [
-        "api-reference/public_scan/start_scan",
-        "api-reference/public_scan/get_results"
-
+        "api-reference/public/health"
       ]
     },
     {
