@@ -248,7 +248,7 @@ paths:
 
   /api/v2/securitron:
     post:
-      summary: Securitron ChatBot
+      summary: ChatBot
       tags:
         - Public Scan
       security:
@@ -338,6 +338,83 @@ paths:
                   Hey Name Surname!  
                   You authenticated via google using `your_email@aquilax.io`. 
 
+  /api/v2/ai/review:
+    post:
+      summary: Vulnerability Review
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: org
+          in: query
+          required: true
+          description: Organization ID
+          schema:
+            type: string
+      description: |
+        Sends vulnerability details and source code to the AI service, which analyzes
+        the data and returns a classification with a confidence score.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: |
+                    A code snippet representing the vulnerable logic or affected lines.
+                  example: |
+                    try {
+                      const user = db.getUserById(req.query.id);
+                      res.send(user);
+                    } catch (err) {
+                      res.status(500).send("Error");
+                    }
+                cwe_id:
+                  type: string
+                  description: CWE identifier, if applicable.
+                  example: CWE-79
+                cwe_name:
+                  type: string
+                  description: Optional name or title of the CWE.
+                  example: Cross-Site Scripting
+                line:
+                  type: string
+                  description: Line number(s) where the issue appears.
+                  example: "105"
+                file:
+                  type: string
+                  description: Name or path of the file containing the snippet.
+                  example: userController.js
+      responses:
+        '200':
+          description: Successful classification result from the AI model.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  class:
+                    type: string
+                    enum: [TRUE_POSITIVE, FALSE_POSITIVE, UNVERIFIED]
+                    description: |
+                      The AI-determined classification of the vulnerability.
+                  confidence:
+                    type: number
+                    format: float
+                    description: Confidence percentage (0–100) of the classification.
+                example:
+                  class: "TRUE_POSITIVE"
+                  confidence: 95.12
+        '400':
+          description: Invalid request format
+        '500':
+          description: Internal server error or AI model not configured
+        '502':
+          description: Failed to reach external AI model
   /api/v2/organization/{organization_id}/groups:
     get:
       summary: All Groups
