@@ -483,32 +483,6 @@ paths:
                   type: string
                   description: User parameters in the Query string
                   example: User parameters in the Query string
-      responses:
-        '200':
-          description: Successful classification result from the AI model.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  class:
-                    type: string
-                    enum: [TRUE_POSITIVE, FALSE_POSITIVE, UNVERIFIED]
-                    description: |
-                      The AI-determined classification of the vulnerability.
-                  confidence:
-                    type: number
-                    format: float
-                    description: Confidence percentage (0–100) of the classification.
-                example:
-                  class: "TRUE_POSITIVE"
-                  confidence: 95.12
-        '400':
-          description: Invalid request format
-        '500':
-          description: Internal server error or AI model not configured
-        '502':
-          description: Failed to reach external AI model
 
 
   /api/v2/organization/{organization_id}/groups:
