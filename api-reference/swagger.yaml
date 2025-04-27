@@ -485,31 +485,13 @@ paths:
                   example: User parameters in the Query string
       responses:
         '200':
-          description: Streamed AI response
-          content:
-            text/event-stream:
-              schema:
-                type: string
-              example: |
-                data: {"class": "TRUE_POSITIVE", "confidence": 95.12}
+          description: Successful streaming result from the AI model.
         '400':
-          description: Invalid input provided (e.g., question too short)
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
+          description: Invalid request format
         '500':
-          description: Server error while connecting to downstream AI model
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
+          description: Internal server error or AI model not configured
+        '502':
+          description: Failed to reach external AI model
 
 
   /api/v2/organization/{organization_id}/groups:
