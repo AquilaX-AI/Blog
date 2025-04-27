@@ -485,11 +485,11 @@ paths:
                   example: User parameters in the Query string
       responses:
         '200':
+          description: Successful classification result from the AI model.
           content:
-            text/event-stream:
+            application/json:
               schema:
                 type: string
-                description: Streaming text response
         '400':
           description: Invalid request format
         '500':
