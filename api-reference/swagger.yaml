@@ -246,7 +246,7 @@ paths:
                   status:
                     type: string
 
-  /api/v2/securitron:
+  /api/v2/ai/securitron:
     post:
       summary: ChatBot
       tags:
@@ -415,6 +415,103 @@ paths:
           description: Internal server error or AI model not configured
         '502':
           description: Failed to reach external AI model
+
+  /api/v2/ai/assistant:
+    post:
+      summary: Security Assistant
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: org
+          in: query
+          required: true
+          description: Organization ID
+          schema:
+            type: string
+      description: |
+        This API forwards the incoming question and vulnerability context to an external AI model assistant
+        and streams back the AI's response in real-time (text/event-stream).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: |
+                    A code snippet representing the vulnerable logic or affected lines.
+                  example: |
+                    try {
+                      const user = db.getUserById(req.query.id);
+                      res.send(user);
+                    } catch (err) {
+                      res.status(500).send("Error");
+                    }
+                cwe_id:
+                  type: string
+                  description: CWE identifier, if applicable.
+                  example: CWE-79
+                cwe_name:
+                  type: string
+                  description: Optional name or title of the CWE.
+                  example: Cross-Site Scripting
+                line:
+                  type: string
+                  description: Line number(s) where the issue appears.
+                  example: "105"
+                file:
+                  type: string
+                  description: Name or path of the file containing the snippet.
+                  example: userController.js
+                prompt:
+                  type: string
+                  description: A question to the Security Assistant
+                  example: How to fix this?
+                status:
+                  type: string
+                  description: TRUE POSITIVE, FALSE POSITIVE or UNVERIFIED
+                  example: UNVERIFIED
+                Reason:
+                  type: string
+                  description: Reason of how this is identified as vulnerability from the scanner
+                  example: SQL Injection in the code
+                Remedation:
+                  type: string
+                  description: User parameters in the Query string
+                  example: User parameters in the Query string
+      responses:
+        '200':
+          description: Streamed AI response
+          content:
+            text/event-stream:
+              schema:
+                type: string
+              example: |
+                data: {"class": "TRUE_POSITIVE", "confidence": 95.12}
+        '400':
+          description: Invalid input provided (e.g., question too short)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Server error while connecting to downstream AI model
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
+
   /api/v2/organization/{organization_id}/groups:
     get:
       summary: All Groups
