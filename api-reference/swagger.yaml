@@ -485,7 +485,7 @@ paths:
                   example: User parameters in the Query string
       responses:
         '200':
-          description: Successful classification result from the AI model.
+          description: Successful classification result from the AI model in streaming format.
           content:
             application/json:
               schema:
