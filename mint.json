@@ -15,7 +15,7 @@
       "to": "#0076c2"
     }
   },
-  "openapi": "/api-reference/openapi.json",
+  "openapi": "/api-reference/swagger.yaml",
   "topbarLinks": [
     {
       "name": "Login",
