@@ -248,7 +248,7 @@ paths:
 
   /api/v2/ai/securitron:
     post:
-      summary: ChatBot
+      summary: Securitron Bot
       tags:
         - Public Scan
       security:
