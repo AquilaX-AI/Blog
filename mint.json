@@ -109,7 +109,8 @@
       "group": "Scan",
       "pages": [
         "api-reference/scan/start-scan",
-        "api-reference/scan/get-scan"
+        "api-reference/scan/get-scan",
+        "api-reference/scan/update-scan"
       ]
     },
     {

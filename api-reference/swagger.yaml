@@ -799,7 +799,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
 
-
   /api/v2/vulns:
     get:
       summary: List
@@ -828,3 +827,85 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
+
+  /api/v2/scan/{scan_id}/finding/{finding_id}:
+    put:
+      summary: Update Scan
+      description: |
+        Update specific fields (status, reason, remediation, severity, impact, likelihood, confidence) of a single finding inside a scan result.  
+        Only the fields provided in the request body will be updated. Fields omitted will remain unchanged.
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: org
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Organization ID
+        - name: group
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Group ID
+        - name: scan_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the scan document
+        - name: finding_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the finding to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Fields to update in the finding
+              properties:
+                status:
+                  type: string
+                  description: Status of the finding (e.g., True Positive, False Positive, Unverified)
+                reason:
+                  type: string
+                  description: Reason for classification
+                remediation:
+                  type: string
+                  description: Suggested remediation
+                severity:
+                  type: string
+                  description: Severity level
+                impact:
+                  type: string
+                  description: Potential impact
+                likelihood:
+                  type: string
+                  description: Likelihood of exploit
+                confidence:
+                  type: string
+                  description: Confidence in detection
+              example:
+                status: "TRUE POSITIVE"
+                reason: "Confirmed based on business logic"
+                remediation: "Input sanitization applied"
+                severity: "HIGH"
+                impact: "Sensitive data exposure"
+                likelihood: "MEDIUM"
+                confidence: "MEDIUM"
+      responses:
+        '200':
+          description: Finding updated successfully
+        '400':
+          description: Invalid request or missing required fields
+        '404':
+          description: Scan or finding not found
+        '500':
+          description: Internal server error
