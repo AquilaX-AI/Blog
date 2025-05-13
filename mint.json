@@ -84,10 +84,7 @@
       "group": "Organizations",
       "pages": [
         "api-reference/orgs/get-integrations",
-        "api-reference/groups/get-groups",
-        "api-reference/groups/delete"
-
-
+        "api-reference/groups/get-groups"
       ]
     },
     {
@@ -101,22 +98,22 @@
       "group": "Projects",
       "pages": [
         "api-reference/projects/get-projects",
-        "api-reference/projects/get",
-        "api-reference/projects/delete"
+        "api-reference/projects/get"
       ]
     },
     {
       "group": "Scan",
       "pages": [
         "api-reference/scan/start-scan",
-        "api-reference/scan/get-scan",
-        "api-reference/scan/update-scan"
+        "api-reference/scan/get-scan"
+        
       ]
     },
     {
       "group": "Vulnerabilities",
       "pages": [
-        "api-reference/vulns/get"
+        "api-reference/vulns/get",
+        "api-reference/scan/update-scan"
       ]
     }
 

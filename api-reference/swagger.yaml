@@ -518,6 +518,111 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenericJSON'
+    
+    post:
+      summary: Create Group
+      tags:
+        - Public Scan
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: organization_id
+          in: query
+          required: true
+          description: Organization ID
+          schema:
+            type: string
+      description: |
+        Sends vulnerability details and source code to the AI service, which analyzes
+        the data and returns a classification with a confidence score.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Human readable Group Name
+                  example: Main
+                security_policy:
+                  type: object
+                  description: |
+                    A JSON object representing the security policy configuration for the group.  
+                    Includes scanner configurations, frequency of scans, thresholds, and ticketing behavior.
+
+                  properties:
+                    frequency:
+                      type: string
+                      description: Cron expression defining how often to run scans. Use `"none"` for disabled scheduling.
+                      example: "none"
+                    ignore:
+                      type: array
+                      items:
+                        type: string
+                      description: Paths or patterns to ignore during scanning.
+                      example: ["test/*", "node_modules/*"]
+                    jira_project_key:
+                      type: string
+                      example: ""
+                    notify_on_failure:
+                      type: boolean
+                      example: true
+                    raise_tickets:
+                      type: boolean
+                      example: false
+                    scanners:
+                      type: array
+                      description: |
+                        List of enabled scanners. Each scanner is an object with a key indicating its type 
+                        (e.g., `sast`, `secret`, `compliance`) and an `enforced` boolean.
+                      items:
+                        type: object
+                        additionalProperties: true
+                        example:
+                          sast: true
+                          enforced: false
+                    tags:
+                      type: array
+                      items:
+                        type: string
+                      example: ["all-scanners", "example", "special-project"]
+                    testing:
+                      type: boolean
+                      example: false
+                    threshold:
+                      type: object
+                      properties:
+                        HIGH:
+                          type: integer
+                          example: 30
+                        MEDIUM:
+                          type: integer
+                          example: 100
+                        LOW:
+                          type: integer
+                          example: 99999
+                        total:
+                          type: integer
+                          example: 100
+                    ticket_body:
+                      type: string
+                      example: "Was found this {{vuln}} on this file {{file}}"
+                    ticket_integration:
+                      type: string
+                      example: ""
+                    ticket_title:
+                      type: string
+                      example: "AquilaX - {{vuln}}"
+      responses:
+        '200':
+          description: Invalid request format
+        '500':
+          description: Internal server error or AI model not configured
+        '502':
+          description: Failed to reach external AI model
+
 
   /api/v2/organization/{organization_id}/integrations:
     get:
@@ -543,7 +648,7 @@ paths:
 
   /api/v2/report:
     get:
-      summary: Report
+      summary: Summary Report
       description: Returns an JSON documentation with the number of projects, scans, line of code and files, along with the vulnerabilites
       tags:
         - Public Scan
@@ -597,7 +702,7 @@ paths:
 
   /api/v2/projects:
     get:
-      summary: All Projects
+      summary: List of Projects
       description: Returns an JSON Array of all projects for the given group ID
       tags:
         - Public Scan
@@ -801,7 +906,7 @@ paths:
 
   /api/v2/vulns:
     get:
-      summary: List
+      summary: List of Groups
       tags:
         - Public Scan
       security:
@@ -830,7 +935,7 @@ paths:
 
   /api/v2/scan/{scan_id}/finding/{finding_id}:
     put:
-      summary: Update Scan
+      summary: Update Finding
       description: |
         Update specific fields (status, reason, remediation, severity, impact, likelihood, confidence) of a single finding inside a scan result.  
         Only the fields provided in the request body will be updated. Fields omitted will remain unchanged.
