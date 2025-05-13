@@ -499,7 +499,7 @@ paths:
 
   /api/v2/organization/{organization_id}/groups:
     get:
-      summary: All Groups
+      summary: List of Groups
       description: Returns an array of all groups associated with the given organization ID. 🚀
       tags:
         - Public Scan
@@ -906,7 +906,7 @@ paths:
 
   /api/v2/vulns:
     get:
-      summary: List of Groups
+      summary: List of Vulnerabilites
       tags:
         - Public Scan
       security:
@@ -935,7 +935,7 @@ paths:
 
   /api/v2/scan/{scan_id}/finding/{finding_id}:
     put:
-      summary: Update Finding
+      summary: Update Vulnerability
       description: |
         Update specific fields (status, reason, remediation, severity, impact, likelihood, confidence) of a single finding inside a scan result.  
         Only the fields provided in the request body will be updated. Fields omitted will remain unchanged.
