@@ -497,6 +497,101 @@ paths:
         '502':
           description: Failed to reach external AI model
 
+  /api/v2/ai/feedback/{request_id}/{status}:
+    get:
+      summary: Feedback
+      description: |
+        Proxies feedback for a specific AI model request for a given Chat message.
+      operationId: submitAIFeedback
+      tags:
+        - AI Feedback
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          description: Unique identifier of the AI request to provide feedback for
+          schema:
+            type: string
+            format: uuid
+            example: "77e81bbc-3e7f-47b9-87fa-681b5d2f54e6"
+        - name: status
+          in: path
+          required: true
+          description: Feedback status for the request
+          schema:
+            type: string
+            enum:
+              - "true"
+              - "false"
+            example: "false"
+        - name: org
+          in: query
+          required: true
+          description: Organization identifier
+          schema:
+            type: string
+            example: "65dd3e835a669e3347654200"
+        - name: group
+          in: query
+          required: true
+          description: Group identifier
+          schema:
+            type: string
+            example: "67e86d036e9921509f730483"
+      responses:
+        '200':
+          description: Feedback submitted successfully
+        '400':
+          description: Bad request - Invalid parameters
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "A valid organization_id is required in the URL path"
+        '401':
+          description: Unauthorized - Invalid authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found - Request ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Failed to make request to downstream API"
+        '502':
+          description: Bad gateway - Downstream service error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service unavailable - Downstream service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '504':
+          description: Gateway timeout - Downstream service timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   /api/v2/organization/{organization_id}/groups:
     get:
       summary: List of Groups

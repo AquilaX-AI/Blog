@@ -75,7 +75,7 @@
       "pages": [
         "api-reference/genai/securitron",
         "api-reference/genai/review",
-        "api-reference/genai/assistant"
+        "api-reference/genai/feedback"
 
       ]
     }
