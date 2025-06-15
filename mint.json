@@ -28,8 +28,13 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "Public API",
       "url": "api-reference"
+    },
+    {
+      "name": "(Private) AI API",
+      "url": "backend-ai",
+      "openapi": "https://aquilax.ai/api/v3/openapi"
     }
   ],
   "anchors": [
@@ -114,6 +119,13 @@
       "pages": [
         "api-reference/vulns/get",
         "api-reference/scan/update-scan"
+      ]
+    }
+    ,
+    {
+      "group": "Backend AI Services",
+      "pages": [
+        "backend-ai"
       ]
     }
 
