@@ -5,7 +5,7 @@
     "dark": "https://aquilax.ai/logo/appsec-aquilax-2-logo-full.png",
     "light": "https://aquilax.ai/logo/appsec-aquilax-2-logo-full.png"
   },
-  "favicon": "/appsec-aquilax-logo-2.ico",
+  "favicon": "favicon.ico",
   "colors": {
     "primary": "#1088f8",
     "light": "#1088f8",
@@ -20,7 +20,7 @@
     
   ],
   "topbarCtaButton": {
-    "name": "Login",
+    "name": "Dashboard",
     "url": "https://aquilax.ai/app/home"
   },
   "tabs": [
