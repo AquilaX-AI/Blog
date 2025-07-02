@@ -2,14 +2,14 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "AquilaX Developer Portal",
   "logo": {
-    "dark": "https://aquilax.ai/aquilax/img/full-logo-aquilax-white-transparent-new.png",
-    "light": "https://aquilax.ai/aquilax/img/full-logo-aquilax-black-transparent-new.png"
+    "dark": "https://aquilax.ai/logo/appsec-aquilax-2-logo-full.png",
+    "light": "https://aquilax.ai/logo/appsec-aquilax-2-logo-full.png"
   },
-  "favicon": "/aquilax-favicon.png",
+  "favicon": "/appsec-aquilax-logo-2.ico",
   "colors": {
-    "primary": "#003460",
-    "light": "#0076c2",
-    "dark": "#003460",
+    "primary": "#1088f8",
+    "light": "#1088f8",
+    "dark": "#1088f8",
     "anchors": {
       "from": "#003460",
       "to": "#0076c2"
@@ -17,14 +17,11 @@
   },
   "openapi": "/api-reference/swagger.yaml",
   "topbarLinks": [
-    {
-      "name": "Login",
-      "url": "https://aquilax.ai/login"
-    }
+    
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://aquilax.ai"
+    "name": "Login",
+    "url": "https://aquilax.ai/app/home"
   },
   "tabs": [
     {
